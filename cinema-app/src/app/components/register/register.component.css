@@ -5,7 +5,7 @@
 }
 
 legend.registrationForm {
-  width: auto;
+  width: inherit;
   padding: 0 10px;
   border: none;
 }
