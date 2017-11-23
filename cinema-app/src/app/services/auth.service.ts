@@ -9,13 +9,14 @@ export class AuthService {
   private BASE_URL: string = 'http://207.154.211.202:3000/api/v1/auth';
   private headers: Headers = new Headers({ 'Content-Type': 'application/json' });
   constructor(private http: Http) { }
-  
+
   login(user: User): Promise<any> {
     let url: string = `${this.BASE_URL}/login`;
     return this.http.post(url, user, { headers: this.headers }).toPromise();
   }
 
   logout() {
+    let url: string = `${this.BASE_URL}/logout`;
     localStorage.removeItem('token');
   }
 

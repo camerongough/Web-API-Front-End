@@ -1,1 +1,57 @@
+<!-- <ul>
+  <li>
+    <a routerLink="/movie/5a01d805a2b1e109afcb8b96">Thor</a>
+  </li>
+  <li>
+    <a routerLink="/movie/5a01d2a1a2b1e109afcb8b95">Blade Runner 2049</a>
+  </li>
+  <li>
+    <a routerLink="/movie/5a01dadea2b1e109afcb8b97">Justice League</a>
+  </li>
+</ul> -->
 
+<div class="container">
+  <div class="row justify-content-center">
+    <div id="showMovie" class="carousel slide" data-ride="carousel">
+
+      <ul class="carousel-indicators">
+        <li data-target="#showMovie" data-slide-to="0" class="active"></li>
+        <li data-target="#showMovie" data-slide-to="1"></li>
+        <li data-target="#showMovie" data-slide-to="2"></li>
+      </ul>
+
+      <div class="row">
+        <div class="carousel-inner ">
+          <div class="carousel-item active">
+            <a routerLink="/movie/5a01d2a1a2b1e109afcb8b95"> <img src="https://image.tmdb.org/t/p/w300/aMpyrCizvSdc0UIMblJ1srVgAEF.jpg" alt="Blade Runner 2049"> </a>
+            <div class="carousel-caption">
+              <a routerLink="/movie/5a01d2a1a2b1e109afcb8b95">
+                <h6>Blade Runner 2049</h6> </a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <a routerLink="/movie/5a01d805a2b1e109afcb8b96"> <img src="https://image.tmdb.org/t/p/w300/oSLd5GYGsiGgzDPKTwQh7wamO8t.jpg" alt="Thor: Ragnarok"> </a>
+            <div class="carousel-caption">
+              <a routerLink="/movie/5a01d805a2b1e109afcb8b96">
+                <h6>Thor: Ragnarok</h6> </a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <a routerLink="/movie/5a01dadea2b1e109afcb8b97"> <img src="https://image.tmdb.org/t/p/w300/9rtrRGeRnL0JKtu9IMBWsmlmmZz.jpg" alt="Justice League"> </a>
+            <div class="carousel-caption">
+              <a routerLink="/movie/5a01dadea2b1e109afcb8b97">
+                <h6>Justice League</h6> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#showMovie" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#showMovie" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </div>
+</div>

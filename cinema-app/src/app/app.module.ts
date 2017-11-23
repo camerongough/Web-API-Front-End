@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MovieComponent } from './components/movie/movie.component';
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'movie',
+    path: 'movie/:id',
     component: MovieComponent
   },
   {
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)

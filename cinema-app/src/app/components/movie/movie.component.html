@@ -1,3 +1,69 @@
-<p>
-  movie works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 *ngIf="data">{{data.movie.title}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3.5">
+      <img *ngIf="data" src="https://image.tmdb.org/t/p/w300{{data.movie.poster_path}}" />
+    </div>
+    <div class="col-sm-5">
+      <p *ngIf="data">
+        {{data.movie.overview}}
+      </p>
+      <div class="row">
+        <div class="col-sm">
+          <a *ngIf="data" href="{{data.movie.homepage}}">Movie page</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <ul *ngIf="data">
+          {{data.movie.certification}}
+        </ul>
+      </div>
+      <div class="row">
+        <ul>
+          <h6>Release Date:</h6>
+          <li *ngIf="data">
+            {{data.movie.release_date | date: 'dd/MM/yyyy'}}
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <ul>
+          <h6>Runtime:</h6>
+          <li *ngIf="data">
+            {{data.movie.runtime}}
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <ul *ngIf="data">
+          <h6>Cast:</h6>
+          <li *ngIf="data.cast">
+            {{data.movie.cast[0]}}
+          </li>
+          <li *ngIf="data">
+            {{data.movie.cast[1]}}
+          </li>
+          <li *ngIf="data">
+            {{data.movie.cast[2]}}
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <ul>
+          <h6>Director:</h6>
+          <li *ngIf="data">
+            {{data.movie.director}}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>

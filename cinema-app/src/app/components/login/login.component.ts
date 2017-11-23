@@ -14,9 +14,8 @@ export class LoginComponent {
   onLogin(): void {
     this.auth.login(this.user)
       .then((user) => {
-        console.log(user.json());
         localStorage.setItem('token', user.json().token);
-        this.router.navigateByUrl('/status');
+        this.router.navigateByUrl('/');
       })
       .catch((err) => {
         console.log(err);
