@@ -11,24 +11,47 @@ import { ActivatedRoute } from '@angular/router';
 
 export class MovieComponent {
 
-  data: any = {};
+  movieData: any = {};
   movieId: string;
+	scheduleData: any = {};
 
   constructor(private http: Http, private route: ActivatedRoute) {
     this.route.params.subscribe( params => this.movieId = params['id'] );
-    this.getData();
+    this.getMovieData();
     this.getMovies();
+		this.getScheduleData();
+		this.getMovieSchedule();
   }
 
-  getData() {
-    return this.http.get('http://207.154.211.202:3000/api/v1/movies/' + this.movieId)
+  getMovieData() {
+    return this.http.get('https://api.camerongough.co.uk/api/v1/movies/' + this.movieId)
       .map((res: Response) => res.json())
   }
 
   getMovies() {
-    this.getData().subscribe(data => {
-      console.log(data);
-      this.data = data;
+    this.getMovieData().subscribe(movie => {
+      console.log(movie);
+      this.movieData = movie;
     })
   }
+
+	getScheduleData() {
+		return this.http.get('https://api.camerongough.co.uk/api/v1/schedule/' + this.movieId)
+			.map((res: Response) => res.json())
+	}
+
+	getMovieSchedule() {
+		this.getScheduleData().subscribe(schedule => {
+			var content = schedule.schedule;
+			//var test = JSON.parse(content);
+			// for (var item of content) {
+			// 	console.log(item.day_week);
+			// }
+			console.log(content);
+
+			this.scheduleData = schedule;
+		})
+	}
+
+
 }
