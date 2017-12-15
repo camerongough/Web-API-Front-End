@@ -59,11 +59,13 @@
           <h6>Director:</h6>
           <li *ngIf="movieData">
             {{movieData.movie.director}}
-
           </li>
-		
         </ul>
       </div>
     </div>
   </div>
+	<div class="row">
+		<button (click)="addToWatchList()" class="btn btn-primary my-2 my-sm-0 ml-sm-2">Add To Watch List</button>
+		<!-- <button (click)="addToFavList()" class="btn btn-primary my-2 my-sm-0 ml-sm-2">Add to Favourites List</button> -->
+	</div>
 </div>

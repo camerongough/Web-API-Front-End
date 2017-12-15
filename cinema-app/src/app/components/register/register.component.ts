@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user';
+import { UserRegister } from '../../models/userRegister';
 
 @Component({
   selector: 'app-register',
@@ -10,10 +10,21 @@ import { User } from '../../models/user';
 })
 
 export class RegisterComponent {
-  user: User = new User();
+	email: string;
+	password: string;
+	name: string;
+	dateOfBirth: string;
+  //user: UserRegister = new UserRegister();
   constructor(private auth: AuthService) {}
-  onRegister(): void {
-    this.auth.register(this.user)
+
+  onRegister(email, password, name, dateOfBirth): void {
+		let user = {
+			email: email,
+			password: password,
+			name: name,
+			dateOfBirth: dateOfBirth
+		}
+    this.auth.register(user)
     .then((user) => {
       console.log(user.json());
     })

@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-8">
-      <form (ngSubmit)="onRegister()" novalidate>
+      <form (ngSubmit)="onRegister(email, password, name, dateOfBirth)">
         <fieldset class="with-border">
           <legend class="registrationForm">Register with Cinema</legend>
           <div class="form-group">
             <label for="email" class="control-label col-sm-4">Email Address:</label>
             <div class="col-sm-12">
               <div class="input-group">
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="email">
               </div>
             </div>
           </div>
@@ -16,7 +16,7 @@
             <label for="password" class="control-label col-sm-8">Password</label>
             <div class="col-sm-12">
               <div class="input-group">
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="password">
               </div>
             </div>
           </div>
@@ -24,30 +24,22 @@
             <label for="passwordConfirm" class="control-label col-sm-8">Confirm Password</label>
             <div class="col-sm-12">
               <div class="input-group">
-                <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password">
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="firstName" class="control-label col-sm-6">First Name</label>
+            <label for="name" class="control-label col-sm-6">Name</label>
             <div class="col-sm-12">
               <div class="input-group">
-                <input type="text" class="form-control" id="firstName" placeholder="First name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="name">
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="lastName" class="control-label col-sm-6">Surname</label>
+            <label for="dateOfBirth" class="col-sm-3 control-label">Date of Birth</label>
             <div class="col-sm-12">
-              <div class="input-group">
-                <input type="text" class="form-control" id="lastName" placeholder="Surname">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
-            <div class="col-sm-12">
-              <input type="date" id="birthDate" class="form-control">
+              <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" [(ngModel)]="dateOfBirth">
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Regsiter</button>

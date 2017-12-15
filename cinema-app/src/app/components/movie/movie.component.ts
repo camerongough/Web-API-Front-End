@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,12 +15,16 @@ export class MovieComponent {
   movieId: string;
 	scheduleData: any = {};
 
+	movieTitle: string;
+
+	private headers: Headers = new Headers({ 'Content-Type': 'application/json' });
+
   constructor(private http: Http, private route: ActivatedRoute) {
     this.route.params.subscribe( params => this.movieId = params['id'] );
     this.getMovieData();
     this.getMovies();
-		this.getScheduleData();
-		this.getMovieSchedule();
+		//this.getScheduleData();
+		//this.getMovieSchedule();
   }
 
   getMovieData() {
@@ -30,7 +34,7 @@ export class MovieComponent {
 
   getMovies() {
     this.getMovieData().subscribe(movie => {
-      console.log(movie);
+      //console.log(movie);
       this.movieData = movie;
     })
   }
@@ -53,5 +57,17 @@ export class MovieComponent {
 		})
 	}
 
+	addToWatchList() {
+		const token = localStorage.getItem('token');
+		console.log(token);
+		let headers: Headers = new Headers({
+      'Content-Type': 'application/json',
+      Authorization: token
+    });
+		let movie = {
+			movieId: this.movieId
+		};
+		return this.http.post('https://api.camerongough.co.uk/api/v1/user/watch_list', movie, { headers: headers }).toPromise();
+	}
 
 }

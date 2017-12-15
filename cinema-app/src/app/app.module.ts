@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MovieComponent } from './components/movie/movie.component';
@@ -16,6 +16,8 @@ import { StatusComponent } from './components/status/status.component';
 
 import { EnsureAuthenticated } from './services/ensure-authenticated.service';
 import { LoginRedirect } from './services/login-redirect.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { AddMovieComponent } from './components/add-movie/add-movie.component';
 
 const appRoutes: Routes = [
   {
@@ -28,8 +30,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent,
-    canActivate: [LoginRedirect]
+    component: RegisterComponent//,
+    //canActivate: [LoginRedirect]
   },
   {
     path: 'login',
@@ -38,13 +40,21 @@ const appRoutes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+		canActivate: [EnsureAuthenticated]
   },
   {
     path: 'status',
     component: StatusComponent,
     canActivate: [EnsureAuthenticated]
-  }
+  },
+	{
+		path: 'admin',
+		//component: AdminComponent,
+		children: [
+			{ path: 'add_movie', component: AddMovieComponent }
+		]
+	}
 ];
 
 @NgModule({
@@ -55,7 +65,9 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    StatusComponent
+    StatusComponent,
+    AdminComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
