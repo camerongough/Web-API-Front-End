@@ -4,7 +4,7 @@
 
 ## Made with:
 
- - [AngularJS](https://nodejs.org/en/)
+ - [AngularJS](https://angular.io/)
  
  ----------
 
